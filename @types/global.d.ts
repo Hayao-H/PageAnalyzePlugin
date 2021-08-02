@@ -1,4 +1,5 @@
 import { isTemplateExpression } from "typescript";
+import { Log } from "./local/io/log";
 import { Output } from "./local/io/output";
 import { Hooks } from "./net/hooks/hooks";
 import { DmcInfo } from "./net/hooks/types/dmcinfo";
@@ -31,20 +32,22 @@ export function fetch(url: string): Promise<Response>;
 export interface Application {
 
     /**
-     * output APIです</br>
+     * Output APIです</br>
      * 使用するためにはoutput権限を取得する必要があります。
      */
     output: Output | null;
 
     /**
-     * hooks APIです</br>
+     * Hooks APIです</br>
      * 使用するためにはhooks権限を取得する必要があります。
      */
     hooks: Hooks | null;
-}
 
-export interface Document extends ParentNode {
-
+    /**
+     * Log APIです</br>
+     * 使用するためにはlog権限を取得する必要があります。
+     */
+    log:Log|null;
 }
 
 export interface ParentNode {

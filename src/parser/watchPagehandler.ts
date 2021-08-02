@@ -1,4 +1,4 @@
-import { Document } from "../../@types/global";
+import { ParentNode } from "../../@types/global";
 import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData";
 import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
 import { HtmlParser } from "./htmlParser";
@@ -26,7 +26,7 @@ export class WatchPageHandlerImpl implements WatchPageHandler {
 
     public parseDocument(doc: string): AttemptResult<DataApiData> {
 
-        const hResult: AttemptResult<Document> = this.htmlParser.parse(doc);
+        const hResult: AttemptResult<ParentNode> = this.htmlParser.parse(doc);
 
         if (!hResult.isSucceeded || hResult.data === null) {
             return new AttemptResultImpl<DataApiData>(false, hResult.message, null, hResult.exception);

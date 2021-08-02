@@ -1,13 +1,13 @@
-import { Document } from "../../@types/global";
+import { ParentNode } from "../../@types/global";
 import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData";
 import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
 
 export interface JsonParser {
-    getApiData(dom: Document): AttemptResult<DataApiData>;
+    getApiData(dom: ParentNode): AttemptResult<DataApiData>;
 }
 
 export class JsonParserImpl implements JsonParser {
-    public getApiData(dom: Document): AttemptResult<DataApiData> {
+    public getApiData(dom: ParentNode): AttemptResult<DataApiData> {
         let jsonContent: string;
 
         try {
