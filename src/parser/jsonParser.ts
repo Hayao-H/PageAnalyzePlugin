@@ -20,7 +20,6 @@ export class JsonParserImpl implements JsonParser {
         function reviver(key: string, val: any): any | undefined {
             if (typeof (val) == "string" &&
                 val.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{3})?\+\d{2}:\d{2}$/)) {
-                //"2011-10-10T14:48:00.000+09:00"
                 return new Date(Date.parse(val));
             }
             return val;

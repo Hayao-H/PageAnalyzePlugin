@@ -22,13 +22,13 @@ export class Thumbinfoimpl implements Thumbinfo {
 
 export class Thumbnailimpl implements Thumbnail {
 
-    url: string = "";
+    url = "";
 
-    middleUrl: string = "";
+    middleUrl = "";
 
-    largeUrl: string = "";
+    largeUrl = "";
 
-    player: string = "";
+    player = "";
 
-    ogp: string = "";
+    ogp = "";
 }

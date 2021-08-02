@@ -1,15 +1,15 @@
 export interface DataApiData {
-  channel: Channel
+  channel: Channel | null
   client: Client
-  comment: Comment
+  comment: Comment | null
   external: External
   genre: Genre
-  media: Media
+  media: Media | null
   okReason: string
-  owner: Owner
+  owner: Owner | null
   system: System
   tag: Tag
-  video: Video
+  video: Video | null
   viewer: Viewer
 }
 
@@ -68,7 +68,7 @@ export interface Thread {
   isLeafRequired: boolean
   isOwnerThread: boolean
   isThreadkeyRequired: boolean
-  threadkey?: string
+  threadkey: string | null
   is184Forced: boolean
   hasNicoscript: boolean
   label: string
@@ -114,7 +114,7 @@ export interface Genre {
 }
 
 export interface Media {
-  delivery: Delivery
+  delivery: Delivery | null
 }
 
 export interface Delivery {
@@ -215,7 +215,7 @@ export interface System {
 }
 
 export interface Tag {
-  items: Tag[]
+  items: Tag[] | null
 }
 
 export interface Tag {
