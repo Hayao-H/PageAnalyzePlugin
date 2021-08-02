@@ -1,6 +1,10 @@
 export interface Thumbinfo {
 
-    Large: string;
-    Normal: string;
-    GetSpecifiedThumbnail(size: ThumbSize): string;
+    large: string | null;
+
+    middle: string | null;
+
+    normal: string | null;
+
+    player: string | null;
 }

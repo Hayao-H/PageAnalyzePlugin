@@ -1,5 +1,6 @@
 import { isTemplateExpression } from "typescript";
 import { Output } from "./local/io/output";
+import { Hooks } from "./net/hooks/hooks";
 import { DmcInfo } from "./net/hooks/types/dmcinfo";
 import { Response } from "./net/http/fetch/Response";
 
@@ -38,6 +39,12 @@ export interface Application {
      * output APIです</br>
      * 使用するためにはoutput権限を取得する必要があります。
      */
-    output: Output?;
+    output: Output | null;
+
+    /**
+     * hooks APIです</br>
+     * 使用するためにはhooks権限を取得する必要があります。
+     */
+    hooks: Hooks | null;
 }
 

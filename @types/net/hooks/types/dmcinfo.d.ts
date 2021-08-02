@@ -18,7 +18,7 @@ export interface DmcInfo {
     LikeCount: number;
     Duration: number;
     Tags: string[];
-    IsDownloadsble: boolean;
+    IsDownloadable: boolean;
     IsEncrypted: boolean;
     IsOfficial: boolean;
     UploadedOn: Date;

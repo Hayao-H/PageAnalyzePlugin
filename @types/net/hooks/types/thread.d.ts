@@ -7,7 +7,7 @@ export interface Thread {
     IsLeafRequired: boolean;
     IsOwnerThread: boolean;
     IsThreadkeyRequired: boolean;
-    Threadkey: string?;
+    Threadkey: string | null;
     Is184Forced: boolean;
     HasNicoscript: boolean;
     Label: string;
