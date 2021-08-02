@@ -234,7 +234,7 @@ export interface Video {
   count: Count
   duration: number
   thumbnail: Thumbnail
-  registeredAt: string
+  registeredAt: Date
   isPrivate: boolean
   isDeleted: boolean
   isNoBanner: boolean

@@ -8,14 +8,9 @@ declare global {
 
     const application: Application;
 
-    enum ThumbSize {
-        Large,
-        Middle,
-        Normal,
-        Player
-    };
-
     function fetch(url: string): Promise<Response>;
+
+    function parseHtml(source: string): Document;
 }
 
 /**
@@ -48,3 +43,15 @@ export interface Application {
     hooks: Hooks | null;
 }
 
+export interface Document extends ParentNode {
+
+}
+
+export interface ParentNode {
+    QuerySelector(selectors: string): Element | null;
+}
+
+
+export interface Element {
+    GetAttribute(name: string): string;
+}
