@@ -18,17 +18,24 @@ async function main() {
         application.hooks?.registerPageAnalyzeFunction(content => {
 
             const handler = new WatchPageHandlerImpl(new HtmlParserImpl(), new JsonParserImpl());
-            const result: AttemptResult<DataApiData> = handler.parseDocument(content);
             const converter = new DataConverterImpl();
+            
+            const result: AttemptResult<DataApiData> = handler.parseDocument(content);
 
             if (!result.isSucceeded || result.data === null) {
-                logger.write(`視聴ページの解析に失敗しました。(詳細:${result.message})`);
+                logger.write(`視聴ページの解析に失敗しました。(詳細:${result.message}, 例外:${result.exception?.message})`);
                 throw new Error();
             }
 
-            const info: DmcInfo = converter.convert(result.data);
+            const cResult: AttemptResult<DmcInfo> = converter.convert(result.data);
 
-            return info;
+            if (!cResult.isSucceeded || cResult.data === null) {
+
+                logger.write(`視聴ページの解析に失敗しました。(詳細:${cResult.message}, 例外:${cResult.exception?.message})`);
+                throw new Error();
+            }
+
+            return cResult.data;
         });
 
         logger.write("ページ解析機能の初期化が完了しました。");

@@ -3,14 +3,33 @@ import { DmcinfoImpl } from "../../lib/net/types/impl/dmcinfo";
 import { ThreadImpl } from "../../lib/net/types/impl/thread";
 import { Thumbinfoimpl } from "../../lib/net/types/impl/thumbinfo";
 import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData";
+import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
 
 export interface DataConverter {
-    convert(rawData: DataApiData): DmcInfo;
+
+    /**
+     * 視聴ページJSONをDmcInfoに変換する
+     * @param rawData 視聴ページのJSON
+     */
+    convert(rawData: DataApiData): AttemptResult<DmcInfo>;
 }
 
 export class DataConverterImpl {
 
-    public convert(original: DataApiData): DmcInfo {
+    public convert(rawData: DataApiData): AttemptResult<DmcInfo> {
+
+        let info: DmcInfo;
+
+        try {
+            info = this.convertInternal(rawData);
+        } catch (ex) {
+            return new AttemptResultImpl(false, "視聴ページの解析に失敗しました。", null, ex);
+        }
+
+        return new AttemptResultImpl(true, "", info);
+    }
+
+    private convertInternal(original: DataApiData): DmcInfo {
         const info = new DmcinfoImpl();
 
         //タイトル・ID
