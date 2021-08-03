@@ -1,8 +1,6 @@
-import { isTemplateExpression } from "typescript";
 import { Log } from "./local/io/log";
 import { Output } from "./local/io/output";
 import { Hooks } from "./net/hooks/hooks";
-import { DmcInfo } from "./net/hooks/types/dmcinfo";
 import { Response } from "./net/http/fetch/Response";
 
 declare global {
@@ -11,7 +9,7 @@ declare global {
 
     function fetch(url: string): Promise<Response>;
 
-    function parseHtml(source: string): Document;
+    function parseHtml(source: string): ParentNode;
 }
 
 /**

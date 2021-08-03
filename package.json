@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "node scripts/build.js cross-env DEV=\"development\"",
-    "make": "node scripts/build.js&node scripts/make.js"
+    "make": "node scripts/build.js&node scripts/make.js",
+    "check": "tsc --noemit"
   },
   "dependencies": {}
 }

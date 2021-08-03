@@ -1,5 +1,5 @@
 
-import { Document } from "../../@types/global";
+import { ParentNode } from "../../@types/global";
 import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
 
 export interface HtmlParser {
@@ -8,14 +8,14 @@ export interface HtmlParser {
      * ドキュメントを解析する
      * @param document ページコンテンツ
      */
-    parse(document: string): AttemptResult<Document>;
+    parse(document: string): AttemptResult<ParentNode>;
 }
 
 export class HtmlParserImpl implements HtmlParser {
 
-    public parse(source: string): AttemptResult<Document> {
+    public parse(source: string): AttemptResult<ParentNode> {
 
-        let document: Document;
+        let document: ParentNode;
         try {
             document = parseHtml(source);
         } catch (ex) {

@@ -12,7 +12,7 @@
         },
         "name": "視聴ページ解析プラグイン",
         "author": "HayaoH",
-        "description": "Hook APIを利用して視聴ページを解析するプラグインです。",
+        "description": "Hooks APIを利用して視聴ページを解析するプラグインです。",
         "version": "1.0.0",
         "identifier": "page-analyze-plugin",
         "target_api_version": "1.0",
