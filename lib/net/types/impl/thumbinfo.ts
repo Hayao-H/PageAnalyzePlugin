@@ -3,6 +3,15 @@ import { Thumbnail } from "../json/watchpage/dataApiData";
 
 export class Thumbinfoimpl implements Thumbinfo {
 
+    constructor();
+    constructor(thumbnail: Thumbnail);
+    constructor(thumbnail?: Thumbnail | null) {
+        this.large = thumbnail?.largeUrl ?? null;
+        this.middle = thumbnail?.middleUrl ?? null;
+        this.normal = thumbnail?.url ?? null;
+        this.player = thumbnail?.player ?? null;
+    }
+
     large: string | null = null;
 
     middle: string | null = null;
@@ -11,24 +20,4 @@ export class Thumbinfoimpl implements Thumbinfo {
 
     player: string | null = null;
 
-
-    constructor(thumbnail: Thumbnail) {
-        this.large = thumbnail.largeUrl;
-        this.middle = thumbnail.middleUrl;
-        this.normal = thumbnail.url;
-        this.player = thumbnail.player;
-    }
-}
-
-export class Thumbnailimpl implements Thumbnail {
-
-    url = "";
-
-    middleUrl = "";
-
-    largeUrl = "";
-
-    player = "";
-
-    ogp = "";
 }
