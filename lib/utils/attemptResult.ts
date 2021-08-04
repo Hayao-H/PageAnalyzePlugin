@@ -35,12 +35,12 @@ export class AttemptResultImpl<T> implements AttemptResult<T>{
     /**
     * 成功フラグ
     */
-    isSucceeded: boolean = false;
+    isSucceeded: boolean;
 
     /**
      * メッセージ
      */
-    message: string = "";
+    message: string;
 
     /**
      * 例外情報
