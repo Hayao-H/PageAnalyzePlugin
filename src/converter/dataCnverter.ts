@@ -79,6 +79,7 @@ export class DataConverterImpl {
                 thread.Threadkey = t.threadkey;
                 thread.Is184Forced = t.is184Forced;
                 thread.Label = t.label;
+                thread.Server = t.server;
 
                 info.CommentThreads.push(thread);
             }
