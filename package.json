@@ -2,7 +2,6 @@
   "name": "page-analyze-plugin",
   "version": "1.0.0",
   "description": "視聴ページを解析するプラグインです。",
-  "main": "index.js",
   "author": "HayaoH",
   "license": "MIT",
   "devDependencies": {
