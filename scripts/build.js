@@ -1,6 +1,6 @@
 const esbuild = require("esbuild");
 const isDevelopment = process.env.MODE === "development";
-const packageID="e8554d67-647e-4ce9-8826-6b58adb8631e";
+const packageID="0ed383b3-a739-421e-989d-ee84b34e6ac8";
 
 esbuild.build({
     entryPoints: ['./src/main.ts'],
