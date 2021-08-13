@@ -86,7 +86,7 @@ export class DataConverterImpl {
         }
 
         //ユーザー情報
-        info.UserId = String(original.viewer.id);
+        info.UserId = String(original.viewer?.id ?? 0);
         info.Userkey = original.comment?.keys.userKey ?? "";
 
         //公式フラグ

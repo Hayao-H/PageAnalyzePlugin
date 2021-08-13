@@ -10,7 +10,7 @@ export interface DataApiData {
   system: System
   tag: Tag
   video: Video | null
-  viewer: Viewer
+  viewer: Viewer | null
 }
 
 export interface Owner {
