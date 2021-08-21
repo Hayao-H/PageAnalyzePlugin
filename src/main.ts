@@ -1,11 +1,11 @@
-import { DmcInfo } from "../@types/net/hooks/types/dmcinfo";
-import { OutputHandler } from "../lib/io/output";
-import { AttemptResult } from "../lib/utils/attemptResult";
+import { DmcInfo } from "../NiconicomeAddonCoreLib/@types/net/hooks/types/dmcinfo";
+import { OutputHandler } from "../NiconicomeAddonCoreLib/lib/io/output";
+import { AttemptResult } from "../NiconicomeAddonCoreLib/lib/utils/attemptResult";
 import { DataConverterImpl } from "./converter/dataCnverter";
 import { HtmlParserImpl } from "./parser/htmlParser";
 import { JsonParserImpl } from "./parser/jsonParser";
 import { WatchPageHandlerImpl } from "./parser/watchPagehandler";
-import { LoggerImpl } from "../lib/io/log";
+import { LoggerImpl } from "../NiconicomeAddonCoreLib/lib/io/log";
 import { WatchPageANalyzerImpl } from "./analyzers/watchPageAnalyzer";
 
 main();

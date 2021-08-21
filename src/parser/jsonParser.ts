@@ -1,6 +1,6 @@
-import { ParentNode } from "../../@types/global";
-import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData";
-import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
+import { ParentNode } from "../../NiconicomeAddonCoreLib/@types/global";
+import { DataApiData } from "../../NiconicomeAddonCoreLib/lib/net/types/json/watchpage/dataApiData";
+import { AttemptResult, AttemptResultImpl } from "../../NiconicomeAddonCoreLib/lib/utils/attemptResult";
 
 export interface JsonParser {
     getApiData(dom: ParentNode): AttemptResult<DataApiData>;
