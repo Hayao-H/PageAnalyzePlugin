@@ -7,7 +7,7 @@ export interface DataApiData {
   media: Media | null
   okReason: string
   owner: Owner | null
-  system: System | null
+  system: System
   tag: Tag
   video: Video | null
   viewer: Viewer | null
@@ -210,7 +210,7 @@ export interface Url {
 
 
 export interface System {
-  serverTime: Date
+  serverTime: string
   isPeakTime: boolean
 }
 

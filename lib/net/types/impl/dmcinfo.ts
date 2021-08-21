@@ -24,8 +24,6 @@ export class DmcinfoImpl implements DmcInfo {
     IsDownloadable = false;
     IsEncrypted = false;
     IsOfficial = false;
-    IsPeakTime = false;
-    IsPremium = false;
     UploadedOn: Date = new Date();
     DownloadStartedOn: Date = new Date();
     SessionInfo: SessionInfo = new SessionInfoImpl();
