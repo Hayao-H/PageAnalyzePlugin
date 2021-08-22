@@ -20,9 +20,10 @@ export const application: Application;
 /**
  * fetch API（現状GETのみ）
  * @param url 取得したいページのURL
+ * @param options オプション。
  * @beta
  */
-export function fetch(url: string): Promise<Response>;
+export function fetch(url: string, options: FetchOption | null): Promise<Response>;
 
 /**
  * グローバルスコープに公開されている{@link application}変数のインターフェースです
@@ -45,7 +46,27 @@ export interface Application {
      * Log APIです</br>
      * 使用するためにはlog権限を取得する必要があります。
      */
-    log:Log|null;
+    log: Log | null;
+}
+
+export interface FetchOption {
+    /**
+     * メソッド。デフォルトはGETです。
+     */
+    method?: 'POST' | 'GET',
+
+    /**
+     * 認証情報を含める。 
+     * `include'を指定する場合、session権限が必要です。
+     * デフォルトは'omit'です。
+     */
+    credentials?: 'include' | 'omit',
+
+    /**
+     * body。
+     * POSTメソッドの場合必須です。
+     */
+    body?: string,
 }
 
 export interface ParentNode {
