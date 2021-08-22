@@ -1,6 +1,6 @@
 
-import { ParentNode } from "../../NiconicomeAddonCoreLib/@types/global";
-import { AttemptResult, AttemptResultImpl } from "../../NiconicomeAddonCoreLib/lib/utils/attemptResult";
+import { ParentNode } from "../../@types/global";
+import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
 
 export interface HtmlParser {
 

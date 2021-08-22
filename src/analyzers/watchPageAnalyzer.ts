@@ -1,6 +1,6 @@
-import { DmcInfo } from "../../NiconicomeAddonCoreLib/@types/net/hooks/types/dmcinfo";
-import { DataApiData } from "../../NiconicomeAddonCoreLib/lib/net/types/json/watchpage/dataApiData";
-import { AttemptResult, AttemptResultImpl } from "../../NiconicomeAddonCoreLib/lib/utils/attemptResult";
+import { DmcInfo } from "../../@types/net/hooks/types/dmcinfo";
+import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData";
+import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
 import { DataConverter } from "../converter/dataCnverter";
 import { WatchPageHandler } from "../parser/watchPagehandler";
 

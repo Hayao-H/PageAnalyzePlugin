@@ -1,9 +1,9 @@
-import { DmcInfo } from "../../NiconicomeAddonCoreLib/@types/net/hooks/types/dmcinfo";
-import { DmcinfoImpl } from "../../NiconicomeAddonCoreLib/lib/net/types/impl/dmcinfo";
-import { ThreadImpl } from "../../NiconicomeAddonCoreLib/lib/net/types/impl/thread";
-import { Thumbinfoimpl } from "../../NiconicomeAddonCoreLib/lib/net/types/impl/thumbinfo";
-import { DataApiData } from "../../NiconicomeAddonCoreLib/lib/net/types/json/watchpage/dataApiData";
-import { AttemptResult, AttemptResultImpl } from "../../NiconicomeAddonCoreLib/lib/utils/attemptResult";
+import { DmcInfo } from "../../@types/net/hooks/types/dmcinfo";
+import { DmcinfoImpl } from "../../lib/net/types/impl/dmcinfo";
+import { ThreadImpl } from "../../lib/net/types/impl/thread";
+import { Thumbinfoimpl } from "../../lib/net/types/impl/thumbinfo";
+import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData";
+import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
 
 export interface DataConverter {
 
