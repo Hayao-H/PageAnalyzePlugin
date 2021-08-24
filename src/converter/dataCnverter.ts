@@ -88,6 +88,10 @@ export class DataConverterImpl {
         //ユーザー情報
         info.UserId = String(original.viewer?.id ?? 0);
         info.Userkey = original.comment?.keys.userKey ?? "";
+        info.IsPremium = original.viewer?.isPremium ?? false;
+
+        //サーバー情報
+        info.IsPeakTime = original.system?.isPeakTime ?? false;
 
         //公式フラグ
         info.IsOfficial = original.channel !== null;
