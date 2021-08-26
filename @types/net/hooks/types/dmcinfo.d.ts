@@ -26,4 +26,6 @@ export interface DmcInfo {
     SessionInfo: SessionInfo;
     CommentThreads: Thread[];
     ThumbInfo: Thumbinfo;
+    IsPremium:boolean;
+    IsPeakTime:boolean;
 }
