@@ -7,17 +7,21 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
+    "adm-zip": "^0.5.9",
     "archiver": "^5.3.0",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "esbuild": "^0.12.16",
     "eslint": "^7.31.0",
+    "fs-extra": "^10.0.0",
+    "node-fetch": "^3.1.0",
     "typescript": "^4.3.5"
   },
   "scripts": {
     "build": "cross-env MODE=\"development\" node scripts/build.js",
     "make": "node scripts/build.js&node scripts/make.js",
-    "check": "tsc --noemit"
+    "fetch": "node scripts/fetchLib.js",
+    "check": "tsc --noEmit"
   },
   "dependencies": {}
 }
