@@ -28,11 +28,6 @@ declare global {
 }
 
 /**
- * Webview2内でのみ利用可能なウィンドウ
- */
-//declare var window: Window;
-
-/**
  * Niconicomeが提供するAPIのルートオブジェクトです
  */
 declare var application: Application;
