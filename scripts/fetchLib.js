@@ -1,6 +1,7 @@
 const child_process = require("child_process");
 const util = require("util");
 const fs = require("fs-extra");
+const path = require("path");
 const execFile = util.promisify(child_process.execFile);
 
 //設定
@@ -21,8 +22,8 @@ async function main() {
 
     try {
         await execFile("git", ["clone", "https://github.com/Hayao-H/NiconicomeAddonCoreLib.git"]);
-    } catch (e) { 
-        console.error(e); 
+    } catch (e) {
+        console.error(e);
         return;
     }
 
@@ -40,8 +41,13 @@ async function main() {
 
     process.chdir(cwd);
 
-    fs.copySync("NiconicomeAddonCoreLib\\@types", "@types", { overwrite: true });
-    fs.copySync("NiconicomeAddonCoreLib\\lib", "lib", { overwrite: true });
+    process.env.LIB_OUT_DIRS.split(",").forEach(d => {
+        d = d.trim();
+
+        fs.copySync("NiconicomeAddonCoreLib\\@types", path.join(d, "@types"), { overwrite: true });
+        fs.copySync("NiconicomeAddonCoreLib\\lib", path.join(d, "lib"), { overwrite: true });
+    });
+
 
     fs.rmSync("NiconicomeAddonCoreLib", { force: true, recursive: true });
 

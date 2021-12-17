@@ -21,7 +21,7 @@
     "build": "cross-env MODE=\"development\" node scripts/build.js",
     "make": "node scripts/build.js&node scripts/make.js",
     "fetch": "node scripts/fetchLib.js",
-    "check": "tsc --noEmit"
+    "check:background": "tsc --noEmit --project background/tsconfig.json"
   },
   "dependencies": {}
 }

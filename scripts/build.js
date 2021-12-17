@@ -3,7 +3,7 @@ const isDevelopment = process.env.MODE === 'development';
 require('dotenv').config();
 
 esbuild.build({
-    entryPoints: ['./src/main.ts'],
+    entryPoints: ['./background/src/main.ts'],
     bundle: true,
     minify: !isDevelopment,
     sourcemap: 'inline',
