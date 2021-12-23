@@ -41,16 +41,12 @@ async function main() {
 
     process.chdir(cwd);
 
-    process.env.LIB_OUT_DIRS.split(",").forEach(d => {
-        d = d.trim();
 
-        fs.copySync("NiconicomeAddonCoreLib\\@types", path.join(d, "@types"), { overwrite: true });
-        fs.copySync("NiconicomeAddonCoreLib\\lib", path.join(d, "lib"), { overwrite: true });
-    });
+    fs.copySync("NiconicomeAddonCoreLib\\@types", "@types", { overwrite: true });
+    fs.copySync("NiconicomeAddonCoreLib\\lib", "lib", { overwrite: true });
 
 
     fs.rmSync("NiconicomeAddonCoreLib", { force: true, recursive: true });
-
 }
 
 main()

@@ -3,10 +3,10 @@ const isDevelopment = process.env.MODE === 'development';
 require('dotenv').config();
 
 esbuild.build({
-    entryPoints: ['./src/main.ts'],
+    entryPoints: ['./src/tab.ts'],
     bundle: true,
     minify: !isDevelopment,
-    sourcemap: isDevelopment ? 'inline' : false,
-    outdir: isDevelopment ? process.env.SCRIPT_DIR : 'output',
-    target: "es2021",
+    sourcemap: 'inline',
+    outdir: isDevelopment ?process.env.RESOURCE_DIR : 'output',
+    platform: 'node',
 }).catch((e) => console.error(e));
