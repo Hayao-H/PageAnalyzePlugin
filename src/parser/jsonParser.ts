@@ -13,7 +13,7 @@ export class JsonParserImpl implements JsonParser {
         try {
             jsonContent = dom.QuerySelector("#js-initial-watch-data")?.GetAttribute("data-api-data") ?? "";
         } catch (ex) {
-            return new AttemptResultImpl(false, "ページの解析に失敗しました。", null, ex);
+            return new AttemptResultImpl(false, "ページの解析に失敗しました。", null, ex instanceof Error ? ex : null);
         }
 
         let data: DataApiData;
@@ -29,7 +29,7 @@ export class JsonParserImpl implements JsonParser {
 
             data = JSON.parse(jsonContent, reviver);
         } catch (ex) {
-            return new AttemptResultImpl(false, "Jsonの解析に失敗しました。", null, ex);
+            return new AttemptResultImpl(false, "Jsonの解析に失敗しました。", null, ex instanceof Error ? ex : null);
         }
 
         return new AttemptResultImpl(true, "", data);
