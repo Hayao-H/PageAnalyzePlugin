@@ -37,7 +37,7 @@ export class SyncedFunctionBase {
         return [data.name, p];
     }
 
-    protected serialize(name: string, param: SyncedFunctionParameter): string {
+    protected serialize(name: string, param: SyncedFunctionParameter): Message {
         const params: ParamData[] = param.params;
         const data: Message = {
             isSyncedFunction: true,
@@ -45,7 +45,7 @@ export class SyncedFunctionBase {
             params: params,
         };
 
-        return JSON.stringify(data);
+        return data;
     }
 
     protected exists(name: string): boolean {

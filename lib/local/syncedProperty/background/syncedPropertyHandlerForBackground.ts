@@ -1,6 +1,6 @@
 import { SyncedProperty } from "../syncedProperty";
-import { TabHandle } from "../../../../@types/local/tab/tab"
-import { Message } from "../message";
+import { TabHandle } from "../../../../@types/local/tab/tab";
+import { Message, notifyChange, requestData } from "../message";
 import { SyncedPropertyHandlerBase } from "../syncedPropertyHandlerBase";
 
 export class SyncedPropertyHanderForBackground<T extends string | number | boolean> extends SyncedPropertyHandlerBase<T> {
@@ -41,34 +41,40 @@ export class SyncedPropertyHanderForBackground<T extends string | number | boole
     //#endregion
 
     //#region override
-    
+
     private subscribeMessage(tab: TabHandle) {
-        tab.addMessageHandler(message => {
+        tab.addMessageHandler((message: string) => {
 
             const data: Message = JSON.parse(message) as Message;
 
             if (data.syncedProperty !== true) {
                 return;
-            } else if (!this.exists(data.name)) {
-                return
             }
 
-            const p: SyncedProperty<T> = this.getProperty(data.name);
+            if (data.messageType === notifyChange) {
+                const p: SyncedProperty<T> = this.getProperty(data.name);
 
-            if (data.dataType !== p.valueType) {
-                return;
+                if (data.dataType !== p.valueType) {
+                    return;
+                }
+
+                const value: T = this.parse(data.data, data.dataType);
+                p.cancelSubscriptionOnce();
+                p.value = value;
+            } else if (data.messageType === requestData) {
+                for (const key in this.props) {
+                    this.postMessage(this.getProperty(key));
+                }
             }
 
-            const value: T = this.parse(data.data, data.dataType);
-            p.cancelSubscriptionOnce();
-            p.value = value;
 
         });
     }
 
     protected postMessage(property: SyncedProperty<T>): void {
 
-        const messageS = this.stringify(property);
+        const message = this.serialize(property);
+        const messageS = JSON.stringify(message);
 
         this.tabs.forEach(t => {
             t.postMessage(messageS);

@@ -1,3 +1,4 @@
+import { Message } from "../message";
 import { SyncedFunctionParameter } from "../parameter";
 import { SyncedFunctionBase } from "../syncedFunctionBase";
 
@@ -16,7 +17,7 @@ export class SyncedFunctionForTab extends SyncedFunctionBase {
      * @param parameter 引数
      */
     public call(name: string, parameter: SyncedFunctionParameter) {
-        const message = this.serialize(name,parameter);
+        const message: Message = this.serialize(name, parameter);
         window.chrome.webview.postMessage(message);
     }
 
@@ -28,8 +29,8 @@ export class SyncedFunctionForTab extends SyncedFunctionBase {
         window.chrome.webview.addEventListener('message', message => this.onMessage(message));
     }
 
-    private onMessage(message: string): void {
-        const [name, param] = this.parse(message);
+    private onMessage(message: MessageEvent): void {
+        const [name, param] = this.parse(message.data);
 
         if (name === null || param === null) {
             return;

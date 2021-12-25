@@ -5,6 +5,7 @@ export class SyncedProperty<T extends string | number | boolean> {
     constructor(initialData: T, name: string) {
         this.internalValue = initialData;
         this.handlers = [];
+        this.signalHandlers = [];
         this.internalName = name;
         this.internalValueType = this.getValueType(initialData);
     }
@@ -16,6 +17,8 @@ export class SyncedProperty<T extends string | number | boolean> {
     private subscriptionFlag = true;
 
     private readonly handlers: ((newValue: SyncedProperty<T>) => void)[];
+
+    private readonly signalHandlers: ((newValue: SyncedProperty<T>) => void)[];
 
     private readonly internalName: string;
 
@@ -39,10 +42,12 @@ export class SyncedProperty<T extends string | number | boolean> {
     public set value(val: T) {
         this.internalValue = val;
 
-        if (this.subscriptionFlag){
-            this.handlers.forEach(callback => callback(this));
+        this.handlers.forEach(callback => callback(this));
+        
+        if (this.subscriptionFlag) {
+            this.signalHandlers.forEach(callback => callback(this));
         } else {
-            this.subscriptionFlag=true;
+            this.subscriptionFlag = true;
         }
     }
 
@@ -68,8 +73,14 @@ export class SyncedProperty<T extends string | number | boolean> {
      * 値の変更を購読する
      * @param callback 変更時のコールバック関数
      */
-    public subscribe(callback: (newValue: SyncedProperty<T>) => void): void {
-        this.handlers.push(callback);
+    public subscribe(callback: (newValue: SyncedProperty<T>) => void): void;
+    public subscribe(callback: (newValue: SyncedProperty<T>) => void, isSignal: boolean): void;
+    public subscribe(callback: (newValue: SyncedProperty<T>) => void, isSignal?: boolean): void {
+        if (isSignal) {
+            this.signalHandlers.push(callback);
+        } else {
+            this.handlers.push(callback);
+        }
     }
 
     public cancelSubscriptionOnce(): void {

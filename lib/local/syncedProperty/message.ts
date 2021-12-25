@@ -1,11 +1,14 @@
-import { Types } from "./types";
-
 export interface Message {
 
     /**
      * syncedProperty用のデータであるかどうか
      */
     syncedProperty: boolean;
+
+    /**
+     * メッセージの種別
+     */
+    messageType:string;
 
     /**
      * データ型
@@ -23,3 +26,7 @@ export interface Message {
     name: string;
 
 }
+
+export const notifyChange = "notifyChange";
+
+export const requestData = "requestData";

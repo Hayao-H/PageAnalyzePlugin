@@ -1,4 +1,5 @@
 import { TabHandle } from "../../../../@types/local/tab/tab";
+import { Message } from "../message";
 import { SyncedFunctionParameter } from "../parameter";
 import { SyncedFunctionBase } from "../syncedFunctionBase";
 
@@ -18,7 +19,7 @@ export class SyncedFunctionForBackground extends SyncedFunctionBase {
      */
     public addSyncedTab(tab: TabHandle): void {
         this.tabs.push(tab);
-        tab.addMessageHandler(message => this.onMessage(message));
+        tab.addMessageHandler((message: string) => this.onMessage(message));
     }
 
     /**
@@ -28,8 +29,8 @@ export class SyncedFunctionForBackground extends SyncedFunctionBase {
      */
     public call(name: string, parameter: SyncedFunctionParameter): void {
 
-        const message: string = this.serialize(name, parameter);
-        this.tabs.forEach(p => p.postMessage(message));
+        const message: Message = this.serialize(name, parameter);
+        this.tabs.forEach(p => p.postMessage(JSON.stringify(message)));
     }
 
 

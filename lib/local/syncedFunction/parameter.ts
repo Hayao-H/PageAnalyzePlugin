@@ -20,7 +20,7 @@ export class SyncedFunctionParameter {
     //#region  props
 
     public get params(): ParamData[] {
-        const ps: ParamData[] = this.innnerParams.map((p, i, a) => { return { name: p.name, type: p.type, param: p.param } });
+        const ps: ParamData[] = this.innnerParams.map((p) => { return { name: p.name, type: p.type, param: p.param }; });
 
         return ps;
     }
@@ -73,7 +73,12 @@ export class SyncedFunctionParameter {
             return null;
         }
 
-        const p: ParamData = this.innnerParams.find(p => p.name === name)!;
+        const p: ParamData | undefined = this.innnerParams.find(p => p.name === name);
+
+        if (p === undefined) {
+            return null;
+        }
+
         const data: T = Utils.parse<T>(p.param, p.type);
 
         return data;

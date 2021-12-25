@@ -1,14 +1,23 @@
 import { SyncedProperty } from "./syncedProperty";
-import { TabHandle } from "../../../@types/local/tab/tab"
-import { Message } from "./message";
+import { Message, notifyChange } from "./message";
 import { Types } from "./types";
 
 
 export class SyncedPropertyHandlerBase<T extends string | number | boolean>{
+
+    /**
+     * コンストラクタ
+     * @param defaultValue getPropertyメソッドで、プロパティーが存在しない場合に返す初期値
+     */
+    public constructor(defaultValue: T) {
+        this.defaultValue = defaultValue;
+    }
+
     //#region  field
 
-    private readonly props: { [key: string]: SyncedProperty<T> } = {};
+    protected readonly props: { [key: string]: SyncedProperty<T> } = {};
 
+    private readonly defaultValue: T;
 
     //#endregion
 
@@ -22,7 +31,7 @@ export class SyncedPropertyHandlerBase<T extends string | number | boolean>{
     public getProperty(propertyName: string): SyncedProperty<T> {
 
         if (!this.exists(propertyName)) {
-            throw new Error(`同期プロパティー{${propertyName}}は存在しません。`);
+            this.add(propertyName, this.defaultValue);
         }
 
         return this.props[propertyName];
@@ -50,7 +59,7 @@ export class SyncedPropertyHandlerBase<T extends string | number | boolean>{
 
         const p = new SyncedProperty<T>(initiqalValue, propertyName);
         this.props[propertyName] = p;
-        p.subscribe(prop => this.postMessage(prop));
+        p.subscribe(prop => this.postMessage(prop), true);
 
         return true;
     }
@@ -74,6 +83,7 @@ export class SyncedPropertyHandlerBase<T extends string | number | boolean>{
 
     //#region  private
     protected postMessage(property: SyncedProperty<T>): void {
+        property.name.toString();
     }
 
     protected parse(data: string, dType: string): T {
@@ -87,15 +97,16 @@ export class SyncedPropertyHandlerBase<T extends string | number | boolean>{
         }
     }
 
-    protected stringify(property: SyncedProperty<T>): string {
+    protected serialize(property: SyncedProperty<T>): Message {
         const message: Message = {
             syncedProperty: true,
             dataType: property.valueType,
             data: property.value.toString(),
             name: property.name,
+            messageType: notifyChange
         };
 
-        return JSON.stringify(message);
+        return message;
     }
 
     //#endregion    
