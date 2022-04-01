@@ -74,6 +74,8 @@ export interface Thread {
   label: string
   postkeyStatus: number
   server: string
+  videoId: string
+  forkLabel: string
 }
 
 export interface NgScore {

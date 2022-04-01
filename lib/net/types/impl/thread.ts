@@ -15,4 +15,6 @@ export class ThreadImpl implements Thread {
     Label = "";
     PostkeyStatus = 0;
     Server = "";
+    VideoID = "";
+    ForkLabel = "";
 }
