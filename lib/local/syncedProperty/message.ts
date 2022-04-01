@@ -11,11 +11,6 @@ export interface Message {
     messageType:string;
 
     /**
-     * データ型
-     */
-    dataType: string;
-
-    /**
      * データ
      */
     data: string;

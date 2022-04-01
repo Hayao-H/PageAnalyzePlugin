@@ -2,7 +2,7 @@ import { SyncedProperty } from "../syncedProperty";
 import { Message, requestData } from "../message";
 import { SyncedPropertyHandlerBase } from "../syncedPropertyHandlerBase";
 
-export class SyncedPropertyHandlerForTab<T extends string | number | boolean> extends SyncedPropertyHandlerBase<T>{
+export class SyncedPropertyHandlerForTab<T> extends SyncedPropertyHandlerBase<T>{
 
     /**
      * コンストラクタ
@@ -26,11 +26,12 @@ export class SyncedPropertyHandlerForTab<T extends string | number | boolean> ex
 
             const p: SyncedProperty<T> = this.getProperty(data.name);
 
-            if (data.dataType !== p.valueType) {
+            const value: T|null = this.parse(data.data);
+
+            if (value===null){
                 return;
             }
 
-            const value: T = this.parse(data.data, data.dataType);
             p.cancelSubscriptionOnce();
             p.value = value;
         });
@@ -38,7 +39,6 @@ export class SyncedPropertyHandlerForTab<T extends string | number | boolean> ex
         const message: Message = {
             syncedProperty: true,
             messageType: requestData,
-            dataType: "",
             data: "",
             name: ""
         };

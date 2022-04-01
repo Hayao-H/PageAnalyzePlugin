@@ -2,8 +2,9 @@ import { SyncedProperty } from "../syncedProperty";
 import { TabHandle } from "../../../../@types/local/tab/tab";
 import { Message, notifyChange, requestData } from "../message";
 import { SyncedPropertyHandlerBase } from "../syncedPropertyHandlerBase";
+import { JsonUtils } from "../../../utils/jsonUtils";
 
-export class SyncedPropertyHanderForBackground<T extends string | number | boolean> extends SyncedPropertyHandlerBase<T> {
+export class SyncedPropertyHanderForBackground<T> extends SyncedPropertyHandlerBase<T> {
 
     //#region  field
 
@@ -45,7 +46,7 @@ export class SyncedPropertyHanderForBackground<T extends string | number | boole
     private subscribeMessage(tab: TabHandle) {
         tab.addMessageHandler((message: string) => {
 
-            const data: Message = JSON.parse(message) as Message;
+            const data: Message = JsonUtils.deserialize<Message>(message);
 
             if (data.syncedProperty !== true) {
                 return;
@@ -54,11 +55,12 @@ export class SyncedPropertyHanderForBackground<T extends string | number | boole
             if (data.messageType === notifyChange) {
                 const p: SyncedProperty<T> = this.getProperty(data.name);
 
-                if (data.dataType !== p.valueType) {
+                const value: T | null = this.parse(data.data);
+
+                if (value === null) {
                     return;
                 }
 
-                const value: T = this.parse(data.data, data.dataType);
                 p.cancelSubscriptionOnce();
                 p.value = value;
             } else if (data.messageType === requestData) {
@@ -73,8 +75,8 @@ export class SyncedPropertyHanderForBackground<T extends string | number | boole
 
     protected postMessage(property: SyncedProperty<T>): void {
 
-        const message = this.serialize(property);
-        const messageS = JSON.stringify(message);
+        const message: Message = this.serialize(property);
+        const messageS: string = JSON.stringify(message);
 
         this.tabs.forEach(t => {
             t.postMessage(messageS);

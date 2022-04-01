@@ -28,7 +28,7 @@ export interface TabHandle {
      * 詳しくは[こちら]{@link https://github.com/Hayao-H/NiconicomeAPIDesign/blob/main/accepted/tab/tab-api.md}
      * @param handler コールバック関数
      */
-    addMessageHandler(handler: (message: string)=>void): void;
+    addMessageHandler(handler: (message: string) => void): void;
 }
 
 export interface Tab {
@@ -36,6 +36,7 @@ export interface Tab {
     /**
      * タイトルを指定してタブを追加
      * @param title タブのタイトル
+     * @param position タブの位置
      */
-    add(title: string): Promise<TabHandle>;
+    add(title: string, position: `top` | 'bottom' = 'bottom'): Promise<TabHandle>;
 }

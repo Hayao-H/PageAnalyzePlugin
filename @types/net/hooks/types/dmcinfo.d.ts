@@ -12,6 +12,7 @@ export interface DmcInfo {
     ChannelID: string;
     ChannelName: string;
     Description: string;
+    CommentServer: string;
     ViewCount: number;
     CommentCount: number;
     MylistCount: number;
@@ -26,6 +27,6 @@ export interface DmcInfo {
     SessionInfo: SessionInfo;
     CommentThreads: Thread[];
     ThumbInfo: Thumbinfo;
-    IsPremium:boolean;
-    IsPeakTime:boolean;
+    IsPremium: boolean;
+    IsPeakTime: boolean;
 }

@@ -1,3 +1,4 @@
+import { JsonUtils } from "../../utils/jsonUtils";
 import { Message } from "./message";
 import { ParamData, SyncedFunctionParameter } from "./parameter";
 
@@ -25,7 +26,7 @@ export class SyncedFunctionBase {
     //#region private
 
     protected parse(parameter: string): [string | null, SyncedFunctionParameter | null] {
-        const data: Message = JSON.parse(parameter) as Message;
+        const data: Message = JsonUtils.deserialize<Message>(parameter) as Message;
 
         if (!data.isSyncedFunction || data.name === undefined) {
             return [null, null];

@@ -1,13 +1,10 @@
-import { Types } from "./types";
-
-export class SyncedProperty<T extends string | number | boolean> {
+export class SyncedProperty<T> {
 
     constructor(initialData: T, name: string) {
         this.internalValue = initialData;
         this.handlers = [];
         this.signalHandlers = [];
         this.internalName = name;
-        this.internalValueType = this.getValueType(initialData);
     }
 
     //#region  fields
@@ -21,8 +18,6 @@ export class SyncedProperty<T extends string | number | boolean> {
     private readonly signalHandlers: ((newValue: SyncedProperty<T>) => void)[];
 
     private readonly internalName: string;
-
-    private readonly internalValueType: string;
 
     //#endregion
 
@@ -43,7 +38,7 @@ export class SyncedProperty<T extends string | number | boolean> {
         this.internalValue = val;
 
         this.handlers.forEach(callback => callback(this));
-        
+
         if (this.subscriptionFlag) {
             this.signalHandlers.forEach(callback => callback(this));
         } else {
@@ -56,13 +51,6 @@ export class SyncedProperty<T extends string | number | boolean> {
      */
     public get value(): T {
         return this.internalValue;
-    }
-
-    /**
-     * 値の方を取得する
-     */
-    public get valueType(): string {
-        return this.internalValueType;
     }
 
     //#endregion
@@ -85,22 +73,6 @@ export class SyncedProperty<T extends string | number | boolean> {
 
     public cancelSubscriptionOnce(): void {
         this.subscriptionFlag = false;
-    }
-
-    //#endregion
-
-    //#region  private
-
-    private getValueType(value: T): string {
-        const t = typeof value;
-
-        if (t === "boolean") {
-            return Types.Boolean;
-        } else if (t === "number") {
-            return Types.Number;
-        } else {
-            return Types.String;
-        }
     }
 
     //#endregion
