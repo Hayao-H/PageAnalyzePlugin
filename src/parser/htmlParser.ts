@@ -19,7 +19,7 @@ export class HtmlParserImpl implements HtmlParser {
         try {
             document = parseHtml(source);
         } catch (ex) {
-            return new AttemptResultImpl(false, "ページの解析に失敗しました。", null, ex);
+            return new AttemptResultImpl(false, "ページの解析に失敗しました。", null, ex as Error | null);
         }
 
         return new AttemptResultImpl(true, "", document);

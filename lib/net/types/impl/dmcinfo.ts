@@ -15,6 +15,7 @@ export class DmcinfoImpl implements DmcInfo {
     ChannelID = "";
     ChannelName = "";
     Description = "";
+    CommentServer = "";
     ViewCount = 0;
     CommentCount = 0;
     MylistCount = 0;

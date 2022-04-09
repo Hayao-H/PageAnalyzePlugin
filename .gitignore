@@ -105,3 +105,6 @@ dist
 
 # outputs
 output
+
+# env
+.env
