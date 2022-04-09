@@ -13,4 +13,7 @@ export interface Thread {
     Label: string;
     PostkeyStatus: number;
     Server: string;
+    VideoID: string;
+    ForkLabel: string;
+
 }

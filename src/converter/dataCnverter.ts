@@ -23,7 +23,7 @@ export class DataConverterImpl {
         try {
             info = this.convertInternal(rawData);
         } catch (ex) {
-            return new AttemptResultImpl(false, "視聴ページの解析に失敗しました。", null, ex);
+            return new AttemptResultImpl(false, "視聴ページの解析に失敗しました。", null, ex as Error | null);
         }
 
         return new AttemptResultImpl(true, "", info);
@@ -65,6 +65,7 @@ export class DataConverterImpl {
 
         //コメント情報
         if (original.comment !== null) {
+            info.CommentServer = original.comment.server.url;
             info.CommentThreads = [];
             for (const t of original.comment.threads) {
                 const thread = new ThreadImpl();
@@ -80,6 +81,8 @@ export class DataConverterImpl {
                 thread.Is184Forced = t.is184Forced;
                 thread.Label = t.label;
                 thread.Server = t.server;
+                thread.ForkLabel = t.forkLabel;
+                thread.VideoID = t.videoId;
 
                 info.CommentThreads.push(thread);
             }
