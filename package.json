@@ -23,6 +23,5 @@
     "make": "node scripts/build.js&node scripts/make.js",
     "fetch": "node scripts/fetchLib.js",
     "check": "tsc --noEmit"
-  },
-  "dependencies": {}
+  }
 }
