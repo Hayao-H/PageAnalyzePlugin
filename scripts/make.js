@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("fs-extra");
 const archiver = require("archiver");
 const path = require("path");
 
@@ -43,5 +43,6 @@ archive.directory(tempDir, false);
 archive.finalize();
 
 stream.on("close", () => {
-    fs.rmSync(tempDir, { recursive: true, force: true });
+    console.log("Hello!!!")
+    fs.remove(tempDir);
 });
