@@ -13,7 +13,7 @@
     "dotenv": "^10.0.0",
     "esbuild": "^0.12.16",
     "eslint": "^7.31.0",
-    "fs-extra": "^10.0.0",
+    "fs-extra": "^10.1.0",
     "node-fetch": "^3.1.0",
     "typescript": "^4.3.5"
   },
@@ -23,6 +23,5 @@
     "make": "node scripts/build.js&node scripts/make.js",
     "fetch": "node scripts/fetchLib.js",
     "check": "tsc --noEmit"
-  },
-  "dependencies": {}
+  }
 }

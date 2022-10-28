@@ -108,3 +108,6 @@ output
 
 # env
 .env
+
+#yarn
+.yarn

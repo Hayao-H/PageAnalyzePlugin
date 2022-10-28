@@ -1,29 +1,29 @@
     {
-        "manifest_version": "1.0",
-        "auto_update_policy": {
-            "auto_update": false,
-            "github_release": true,
-            "github_release_filename_pattern": ".*.zip",
-            "github_owner_name": "HayaoH",
-            "github_repo_name": "NiconicomeOfficialPageAnalyzePlugin"
-        },
+        "manifest_version": "1.1",
         "scripts": {
             "background_script": "scripts/main.js"
         },
         "name": "視聴ページ解析プラグイン",
         "author": "HayaoH",
         "description": "Hooks APIを利用して視聴ページを解析するプラグインです。",
-        "version": "1.3.0",
+        "homepage":"https://github.com/Hayao-H/NiconicomeAddonCoreLib",
+        "version": "1.4.0",
         "identifier": "page-analyze-plugin",
-        "target_api_version": "1.0.0",
+        "target_api_version": "1.3.0",
         "permissions": [
             "hooks",
             "output",
-            "log"
+            "log",
+            "remoteUpdate"
         ],
         "host_permissions": [],
         "icons": {
             "32": "icons/32.png",
             "128": "icons/128.png"
+        },
+        "remote_update_policy": { 
+            "updatejson-url": "https://raw.githubusercontent.com/Hayao-H/PageAnalyzePlugin/update/update.json"
         }
     }
+
+    
