@@ -18,8 +18,7 @@
     "typescript": "^4.3.5"
   },
   "scripts": {
-    "build:back": "cross-env MODE=\"development\" node scripts/build.js",
-    "build:tab": "cross-env MODE=\"development\" node scripts/build2.js",
+    "build": "cross-env MODE=\"development\" node scripts/build.js",
     "make": "node scripts/build.js&node scripts/make.js",
     "fetch": "node scripts/fetchLib.js",
     "check": "tsc --noEmit"
