@@ -1,5 +1,6 @@
 import { DmcInfo } from "../../@types/net/hooks/types/dmcinfo";
 import { DmcinfoImpl } from "../../lib/net/types/impl/dmcinfo";
+import { TagImpl } from "../../lib/net/types/impl/tag";
 import { ThreadImpl } from "../../lib/net/types/impl/thread";
 import { Thumbinfoimpl } from "../../lib/net/types/impl/thumbinfo";
 import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData";
@@ -55,7 +56,7 @@ export class DataConverterImpl {
         info.OwnerID = original.owner?.id ?? 0;
 
         //タグ
-        info.Tags = original.tag.items?.map(item => item.name ?? "").filter(i => i) ?? [];
+        info.Tags = original.tag.items?.map(item => new TagImpl(item.isNicodicArticleExists, item.name)) ?? [];
 
         //再生回数・コメント数・マイリス数・いいね数
         info.ViewCount = original.video?.count.view ?? 0;
