@@ -1,4 +1,5 @@
 import { SessionInfo } from "./sessioninfo";
+import { Tag } from "./tag";
 import { Thread } from "./thread";
 import { Thumbinfo } from "./thumbinfo";
 
@@ -18,7 +19,7 @@ export interface DmcInfo {
     MylistCount: number;
     LikeCount: number;
     Duration: number;
-    Tags: string[];
+    Tags: Tag[];
     IsDownloadable: boolean;
     IsEncrypted: boolean;
     IsOfficial: boolean;

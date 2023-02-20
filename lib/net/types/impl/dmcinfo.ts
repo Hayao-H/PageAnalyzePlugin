@@ -1,5 +1,6 @@
 import { DmcInfo } from "../../../../@types/net/hooks/types/dmcinfo";
 import { SessionInfo } from "../../../../@types/net/hooks/types/sessioninfo";
+import { Tag } from "../../../../@types/net/hooks/types/tag";
 import { Thread } from "../../../../@types/net/hooks/types/thread";
 import { Thumbinfo } from "../../../../@types/net/hooks/types/thumbinfo";
 import { SessionInfoImpl } from "./sessioninfo";
@@ -21,7 +22,7 @@ export class DmcinfoImpl implements DmcInfo {
     MylistCount = 0;
     LikeCount = 0;
     Duration = 0;
-    Tags: string[] = [];
+    Tags: Tag[] = [];
     IsDownloadable = false;
     IsEncrypted = false;
     IsOfficial = false;
