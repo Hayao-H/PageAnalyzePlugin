@@ -38,6 +38,7 @@ export interface Comment {
   layers: Layer[]
   threads: Thread[]
   isAttentionRequired: boolean
+  nvComment: NvComment
 }
 
 export interface Server {
@@ -76,6 +77,22 @@ export interface Thread {
   server: string
   videoId: string
   forkLabel: string
+}
+
+export interface NvComment {
+  threadKey: string
+  server: string
+  params: Params
+}
+
+export interface Params {
+  targets: Target[]
+  language: string
+}
+
+export interface Target {
+  id: string
+  fork: string
 }
 
 export interface NgScore {

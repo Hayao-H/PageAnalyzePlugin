@@ -46,7 +46,7 @@ async function main() {
     fs.copySync("NiconicomeAddonCoreLib\\lib", "lib", { overwrite: true });
 
 
-    fs.removeSync("NiconicomeAddonCoreLib", { force: true, recursive: true });
+    fs.removeSync("NiconicomeAddonCoreLib/");
 }
 
 main()
