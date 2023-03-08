@@ -36,7 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dotenv", "npm:10.0.0"],\
             ["esbuild", "npm:0.12.16"],\
             ["eslint", "npm:7.31.0"],\
-            ["fs-extra", "npm:10.1.0"],\
+            ["fs-extra", "npm:11.1.0"],\
             ["node-fetch", "npm:3.1.0"],\
             ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=701156"]\
           ],\
@@ -1137,10 +1137,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["fs-extra", [\
-        ["npm:10.1.0", {\
-          "packageLocation": "./.yarn/cache/fs-extra-npm-10.1.0-86573680ed-dc94ab3709.zip/node_modules/fs-extra/",\
+        ["npm:11.1.0", {\
+          "packageLocation": "./.yarn/cache/fs-extra-npm-11.1.0-2cd157426f-5ca476103f.zip/node_modules/fs-extra/",\
           "packageDependencies": [\
-            ["fs-extra", "npm:10.1.0"],\
+            ["fs-extra", "npm:11.1.0"],\
             ["graceful-fs", "npm:4.2.6"],\
             ["jsonfile", "npm:6.1.0"],\
             ["universalify", "npm:2.0.0"]\
@@ -1634,7 +1634,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dotenv", "npm:10.0.0"],\
             ["esbuild", "npm:0.12.16"],\
             ["eslint", "npm:7.31.0"],\
-            ["fs-extra", "npm:10.1.0"],\
+            ["fs-extra", "npm:11.1.0"],\
             ["node-fetch", "npm:3.1.0"],\
             ["typescript", "patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=701156"]\
           ],\
