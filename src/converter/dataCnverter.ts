@@ -1,5 +1,7 @@
 import { DmcInfo } from "../../@types/net/hooks/types/dmcinfo";
 import { DmcinfoImpl } from "../../lib/net/types/impl/dmcinfo";
+import { TagImpl } from "../../lib/net/types/impl/tag";
+import { TargetImpl } from "../../lib/net/types/impl/target";
 import { ThreadImpl } from "../../lib/net/types/impl/thread";
 import { Thumbinfoimpl } from "../../lib/net/types/impl/thumbinfo";
 import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData";
@@ -55,7 +57,7 @@ export class DataConverterImpl {
         info.OwnerID = original.owner?.id ?? 0;
 
         //タグ
-        info.Tags = original.tag.items?.map(item => item.name ?? "").filter(i => i) ?? [];
+        info.Tags = original.tag.items?.map(item => new TagImpl(item.isNicodicArticleExists, item.name)) ?? [];
 
         //再生回数・コメント数・マイリス数・いいね数
         info.ViewCount = original.video?.count.view ?? 0;
@@ -65,7 +67,19 @@ export class DataConverterImpl {
 
         //コメント情報
         if (original.comment !== null) {
-            info.CommentServer = original.comment.server.url;
+            info.CommentServer = original.comment.nvComment.server;
+            info.Threadkey = original.comment.nvComment.threadKey;
+            info.CommentLanguage = original.comment.nvComment.params.language;
+
+            info.CommentTargets = [];
+            for (const t of original.comment.nvComment.params.targets) {
+                const target = new TargetImpl();
+                target.Id = t.id;
+                target.Fork=t.fork;
+
+                info.CommentTargets.push(target);
+            }
+
             info.CommentThreads = [];
             for (const t of original.comment.threads) {
                 const thread = new ThreadImpl();
