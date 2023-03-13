@@ -7,7 +7,7 @@
         "author": "HayaoH",
         "description": "Hooks APIを利用して視聴ページを解析するプラグインです。",
         "homepage":"https://github.com/Hayao-H/PageAnalyzePlugin",
-        "version": "1.4.2",
+        "version": "1.4.3",
         "identifier": "page-analyze-plugin",
         "target_api_version": "1.3.0",
         "permissions": [
