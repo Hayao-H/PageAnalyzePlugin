@@ -14,10 +14,6 @@ async function main() {
         return;
     }
 
-    if (await fs.existsSync("NiconicomeAddonCoreLib")) {
-        fs.rmSync("NiconicomeAddonCoreLib", { force: true, recursive: true });
-    }
-
     console.log("標準ライブラリの取得を開始します。");
 
     try {
@@ -45,8 +41,6 @@ async function main() {
     fs.copySync("NiconicomeAddonCoreLib\\@types", "@types", { overwrite: true });
     fs.copySync("NiconicomeAddonCoreLib\\lib", "lib", { overwrite: true });
 
-
-    fs.removeSync("NiconicomeAddonCoreLib/");
 }
 
 main()
