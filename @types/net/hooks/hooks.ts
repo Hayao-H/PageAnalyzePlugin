@@ -24,4 +24,9 @@ export interface Hooks {
      * @remarks 例えば、アロー関数を登録する場合はasyncでマークしてください。
      */
     registerVideoInfoFunction(func: (videoID: string, trackID: string) => Promise<DmcInfo>): void;
+    
+    /**
+     * 各関数の登録状況を参照する
+     */
+    isRegistered(hookType: "PageAnalyze" | "WatchSession" | "RemoteInfo"): boolean;
 }

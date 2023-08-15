@@ -13,4 +13,9 @@ export interface NiconicoSessionInfo {
      * セッションID
      */
     SessionId: string;
+
+    /**
+     * Key File URI
+     */
+    KeyURI: string;
 }
