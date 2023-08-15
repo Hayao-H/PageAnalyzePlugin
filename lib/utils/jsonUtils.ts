@@ -8,7 +8,7 @@ export class JsonUtils {
     public static deserialize<T>(source: string): T {
         return JSON.parse(source, (key, value) => {
             if (typeof (value) == "string" &&
-                value.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)) {
+                (value.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/) || value.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+\d{2}:\d{2}$/))) {
                 return new Date(Date.parse(value));
             }
             return value;
