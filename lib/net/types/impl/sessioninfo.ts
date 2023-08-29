@@ -12,6 +12,7 @@ export class SessionInfoImpl implements SessionInfo {
     PlayerId = "";
     TransferPriset = "";
     Priority = 0;
+    KeyURL: string | undefined;
     Videos: string[] = [""];
     Audios: string[] = [""];
 }
