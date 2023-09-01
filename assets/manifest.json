@@ -18,7 +18,8 @@
             "session"
         ],
         "host_permissions": [
-            "https://www.nicovideo.jp/*"
+            "https://www.nicovideo.jp/*",
+            "https://api.dmc.nico/*"
         ],
         "icons": {
             "32": "icons/32.png",

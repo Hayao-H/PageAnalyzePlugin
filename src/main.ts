@@ -10,6 +10,10 @@ import { WatchPageANalyzerImpl } from "./analyzers/watchPageAnalyzer";
 import { APIFetcherImpl } from "./watchAPI/apiFetcher";
 import { APIDataConverterImpl } from "./watchAPI/apiDataConverter";
 import { APIHandlerImpl } from "./watchAPI/apiHandler";
+import { DataComposerImpl } from "./session/data/dataComposer";
+import { SessionEnsureImpl } from "./session/ensure/sessionEnsure";
+import { SessionHandler } from "./session/sessionHanldler";
+import { NiconicoSessionInfo } from "../@types/net/hooks/types/niconicoSessionInfo";
 
 main();
 
@@ -59,6 +63,27 @@ async function main() {
             });
 
             output.write("ページ解析機能の初期化が完了しました。");
+        }
+
+        if (!application.hooks?.isRegistered("WatchSession")) {
+            application.hooks?.registerSessionEnsuringFunction(async info => {
+                const composer = new DataComposerImpl();
+                const session = new SessionEnsureImpl();
+                const handler = new SessionHandler(composer, session);
+
+                const result: AttemptResult<NiconicoSessionInfo> = await handler.EnsureSession(info.SessionInfo);
+
+                if (!result.isSucceeded || result.data === null) {
+                    const message = `セッションの確立に失敗しました。(詳細:${result.message})`;
+                    output.write(message);
+                    logger.error(message);
+                    throw new Error();
+                }
+
+                return result.data;
+            });
+
+            output.write("セッション確立機能の初期化が完了しました。");
         }
     }
 
