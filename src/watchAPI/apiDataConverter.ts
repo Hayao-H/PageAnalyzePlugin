@@ -87,6 +87,7 @@ export class APIDataConverterImpl implements APIDataConverter {
             info.SessionInfo.TransferPriset = source.data.media.delivery.movie.session.transferPresets[0];
             info.SessionInfo.Videos = source.data.media.delivery.movie.session.videos;
             info.SessionInfo.Audios = source.data.media.delivery.movie.session.audios;
+            info.SessionInfo.Priority = source.data.media.delivery.movie.session.priority;
 
         } else {
             info.IsDownloadable = false;
