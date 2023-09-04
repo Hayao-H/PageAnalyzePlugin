@@ -1,11 +1,13 @@
 import { Thumbinfo } from "../../../../@types/net/hooks/types/thumbinfo";
 import { Thumbnail } from "../json/watchpage/dataApiData";
+import { Thumbnail as APIThumb } from "../json/api/watch/v3/api";
 
 export class Thumbinfoimpl implements Thumbinfo {
 
     constructor();
     constructor(thumbnail: Thumbnail);
-    constructor(thumbnail?: Thumbnail | null) {
+    constructor(thumbnail: APIThumb);
+    constructor(thumbnail?: Thumbnail | APIThumb | null) {
         this.large = thumbnail?.largeUrl ?? null;
         this.middle = thumbnail?.middleUrl ?? null;
         this.normal = thumbnail?.url ?? null;
