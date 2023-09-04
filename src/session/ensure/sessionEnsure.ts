@@ -34,7 +34,7 @@ export class SessionEnsureImpl implements SessionEnsure {
         const info = new NiconicoSessionInfoImpl();
         info.ContentUrl = data.data.session.content_uri;
         info.SessionId = data.data.session.id;
-        info.DmcResponseJsonData = content;
+        info.DmcResponseJsonData = JSON.stringify(data.data);
 
         return new AttemptResultImpl<NiconicoSessionInfo>(true, "", info);
     }

@@ -9,7 +9,7 @@
         "homepage":"https://github.com/Hayao-H/PageAnalyzePlugin",
         "version": "1.5.0",
         "identifier": "page-analyze-plugin",
-        "target_api_version": "1.4.0",
+        "target_api_version": "1.4.1",
         "permissions": [
             "hooks",
             "output",
