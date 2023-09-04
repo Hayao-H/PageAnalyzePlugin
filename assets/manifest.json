@@ -7,7 +7,7 @@
         "author": "HayaoH",
         "description": "Hooks APIを利用して動画情報を取得するプラグインです。",
         "homepage":"https://github.com/Hayao-H/PageAnalyzePlugin",
-        "version": "1.4.3",
+        "version": "1.5.0",
         "identifier": "page-analyze-plugin",
         "target_api_version": "1.4.0",
         "permissions": [
