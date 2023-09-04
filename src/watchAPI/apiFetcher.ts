@@ -12,7 +12,7 @@ export class APIFetcherImpl implements APIFetcher {
 
         let res: Response;
         try {
-            res = await fetch(`https://www.nicovideo.jp/api/watch/v3/${videoID}?actionTrackId=${trackID}`, { credentials: "include" });
+            res = await fetch(`https://www.nicovideo.jp/api/watch/v3/${videoID}?actionTrackId=${trackID}&_frontendId=6&_frontendVersion=0&skips=harmful`, { credentials: "include" });
         } catch (e: any) {
             return new AttemptResultImpl(false, `APIへのアクセスに失敗しました。(詳細:${e.message})`,);
         }
