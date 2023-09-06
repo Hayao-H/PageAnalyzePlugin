@@ -18,7 +18,7 @@ export class APIFetcherImpl implements APIFetcher {
         }
 
         if (!res.ok) {
-            return new AttemptResultImpl(false, `APIへのアクセスに失敗しました。`,);
+            return new AttemptResultImpl(false, `APIへのアクセスに失敗しました。(status:${res.status})`,);
         }
 
         const content: string = await res.text();
