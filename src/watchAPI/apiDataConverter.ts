@@ -84,7 +84,11 @@ export class APIDataConverterImpl implements APIDataConverter {
             info.SessionInfo.ContentKeyTimeout = source.data.media.delivery.movie.session.contentKeyTimeout;
             info.SessionInfo.ServiceUserId = source.data.media.delivery.movie.session.serviceUserId;
             info.SessionInfo.PlayerId = source.data.media.delivery.movie.session.playerId;
-            info.SessionInfo.TransferPriset = source.data.media.delivery.movie.session.transferPresets[0];
+            if (source.data.media.delivery.movie.session.transferPresets.length > 0) {
+                info.SessionInfo.TransferPriset = source.data.media.delivery.movie.session.transferPresets[0];
+            } else {
+                info.SessionInfo.TransferPriset = "";
+            }
             info.SessionInfo.Videos = source.data.media.delivery.movie.session.videos;
             info.SessionInfo.Audios = source.data.media.delivery.movie.session.audios;
             info.SessionInfo.Priority = source.data.media.delivery.movie.session.priority;
