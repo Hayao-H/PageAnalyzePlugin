@@ -13,4 +13,9 @@ export interface NiconicoSessionInfo {
      * セッションID
      */
     SessionId: string;
+
+    /**
+     * DMSフラグ
+     */
+    IsDMS: boolean;
 }

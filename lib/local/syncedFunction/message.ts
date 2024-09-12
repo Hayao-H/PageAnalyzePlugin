@@ -1,4 +1,4 @@
-import { ParamData } from "./parameter";
+import { ParamData } from "./parameter.ts";
 
 export interface Message {
 

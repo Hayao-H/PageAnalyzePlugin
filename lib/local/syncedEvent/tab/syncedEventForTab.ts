@@ -1,6 +1,6 @@
-import { SyncedEventBase } from "../syncedEventBase";
-import { Message } from "../message";
-import { JsonUtils } from "../../../utils/jsonUtils";
+import { SyncedEventBase } from "../syncedEventBase.ts";
+import { Message } from "../message.ts";
+import { JsonUtils } from "../../../utils/jsonUtils.ts";
 
 export class SyncedEventForTab extends SyncedEventBase {
 

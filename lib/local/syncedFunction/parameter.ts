@@ -1,4 +1,4 @@
-import { JsonUtils } from "../../utils/jsonUtils";
+import { JsonUtils } from "../../utils/jsonUtils.ts";
 
 export interface ParamData {
 

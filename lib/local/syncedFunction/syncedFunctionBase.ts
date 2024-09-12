@@ -1,6 +1,6 @@
-import { JsonUtils } from "../../utils/jsonUtils";
-import { Message } from "./message";
-import { ParamData, SyncedFunctionParameter } from "./parameter";
+import { JsonUtils } from "../../utils/jsonUtils.ts";
+import { Message } from "./message.ts";
+import { ParamData, SyncedFunctionParameter } from "./parameter.ts";
 
 export class SyncedFunctionBase {
 

@@ -1,6 +1,6 @@
-import { Message } from "../message";
-import { SyncedFunctionParameter } from "../parameter";
-import { SyncedFunctionBase } from "../syncedFunctionBase";
+import { Message } from "../message.ts";
+import { SyncedFunctionParameter } from "../parameter.ts";
+import { SyncedFunctionBase } from "../syncedFunctionBase.ts";
 
 export class SyncedFunctionForTab extends SyncedFunctionBase {
 

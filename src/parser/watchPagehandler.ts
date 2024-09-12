@@ -1,8 +1,8 @@
-import { ParentNode } from "../../@types/global";
-import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData";
-import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
-import { HtmlParser } from "./htmlParser";
-import { JsonParser } from "./jsonParser";
+import { ParentNode } from "../../@types/global.d.ts";
+import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData.ts";
+import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult.ts";
+import { HtmlParser } from "./htmlParser.ts";
+import { JsonParser } from "./jsonParser.ts";
 
 export interface WatchPageHandler {
 
