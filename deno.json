@@ -1,0 +1,7 @@
+{
+    "tasks": {
+        "fetch": "deno run --allow-read --allow-write --allow-env --allow-run --allow-net ./scripts/fetchLib.ts",
+        "check": "deno check ./src/main.ts",
+        "build:dev": "deno run --allow-read --allow-write --allow-env --allow-run --allow-net ./scripts/build.ts development"
+    }
+}

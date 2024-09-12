@@ -1,4 +1,4 @@
-import { Tag } from "../../../../@types/net/hooks/types/tag";
+import { Tag } from "../../../../@types/net/hooks/types/tag.d.ts";
 
 export class TagImpl implements Tag {
     

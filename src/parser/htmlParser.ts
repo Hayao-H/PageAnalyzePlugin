@@ -1,6 +1,6 @@
 
-import { ParentNode } from "../../@types/global";
-import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
+import { ParentNode } from "../../@types/global.d.ts";
+import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult.ts";
 
 export interface HtmlParser {
 

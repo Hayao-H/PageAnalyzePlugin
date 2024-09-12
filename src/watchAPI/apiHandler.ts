@@ -1,7 +1,7 @@
-import { DmcInfo } from "../../@types/net/hooks/types/dmcinfo";
-import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
-import { APIDataConverter } from "./apiDataConverter";
-import { APIFetcher } from "./apiFetcher";
+import { DmcInfo } from "../../@types/net/hooks/types/dmcinfo.d.ts";
+import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult.ts";
+import { APIDataConverter } from "./apiDataConverter.ts";
+import { APIFetcher } from "./apiFetcher.ts";
 
 export interface APIHandler {
     GetVideoInfo(videoID: string, trackID: string): Promise<AttemptResult<DmcInfo>>;

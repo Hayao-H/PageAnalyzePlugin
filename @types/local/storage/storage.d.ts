@@ -1,4 +1,4 @@
-import { LocalStorage } from "./localStorage";
+import { LocalStorage } from "./localStorage.d.ts";
 
 export interface Storage {
 

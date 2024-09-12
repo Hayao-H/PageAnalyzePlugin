@@ -1,4 +1,4 @@
-import { SyncedEventArgs } from "./syncedEventArgs";
+import { SyncedEventArgs } from "./syncedEventArgs.ts";
 
 export class SyncedEventBase {
 

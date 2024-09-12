@@ -1,6 +1,6 @@
-import { SyncedProperty } from "./syncedProperty";
-import { Message, notifyChange } from "./message";
-import { JsonUtils } from "../../utils/jsonUtils";
+import { SyncedProperty } from "./syncedProperty.ts";
+import { Message, notifyChange } from "./message.ts";
+import { JsonUtils } from "../../utils/jsonUtils.ts";
 
 
 export class SyncedPropertyHandlerBase<T>{

@@ -1,6 +1,6 @@
-import { Thumbinfo } from "../../../../@types/net/hooks/types/thumbinfo";
-import { Thumbnail } from "../json/watchpage/dataApiData";
-import { Thumbnail as APIThumb } from "../json/api/watch/v3/api";
+import { Thumbinfo } from "../../../../@types/net/hooks/types/thumbinfo.d.ts";
+import { Thumbnail } from "../json/watchpage/dataApiData.ts";
+import { Thumbnail as APIThumb } from "../json/api/watch/v3/api.ts";
 
 export class Thumbinfoimpl implements Thumbinfo {
 

@@ -1,7 +1,7 @@
-import { TabHandle } from "../../../../@types/local/tab/tab";
-import { JsonUtils } from "../../../utils/jsonUtils";
-import { Message } from "../message";
-import { SyncedEventBase } from "../syncedEventBase";
+import { TabHandle } from "../../../../@types/local/tab/tab.d.ts";
+import { JsonUtils } from "../../../utils/jsonUtils.ts";
+import { Message } from "../message.ts";
+import { SyncedEventBase } from "../syncedEventBase.ts";
 
 export class SyncedEventForBackground extends SyncedEventBase {
 
