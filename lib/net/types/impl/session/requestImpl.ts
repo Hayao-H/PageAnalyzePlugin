@@ -1,4 +1,4 @@
-import { ClientInfo, ContentSrcId, ContentSrcIdSet, Heartbeat, HlsParameters, HttpParameters, KeepMethod, Parameters, Protocol, ProtocolParameters, Request, Session, SessionOperationAuth, SessionOperationAuthBySignature, SrcIdToMux } from "../../json/session/request";
+import { ClientInfo, ContentSrcId, ContentSrcIdSet, Heartbeat, HlsParameters, HttpParameters, KeepMethod, Parameters, Protocol, ProtocolParameters, Request, Session, SessionOperationAuth, SessionOperationAuthBySignature, SrcIdToMux } from "../../json/session/request.ts";
 
 export class RequestImpl implements Request {
     session = new SessionImpl();

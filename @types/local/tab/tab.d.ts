@@ -38,5 +38,5 @@ export interface Tab {
      * @param title タブのタイトル
      * @param position タブの位置
      */
-    add(title: string, position: `top` | 'bottom' = 'bottom'): Promise<TabHandle>;
+    add(title: string, position: `top` | 'bottom'): Promise<TabHandle>;
 }

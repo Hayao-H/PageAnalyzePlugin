@@ -1,8 +1,8 @@
-import { SyncedProperty } from "../syncedProperty";
-import { TabHandle } from "../../../../@types/local/tab/tab";
-import { Message, notifyChange, requestData } from "../message";
-import { SyncedPropertyHandlerBase } from "../syncedPropertyHandlerBase";
-import { JsonUtils } from "../../../utils/jsonUtils";
+import { SyncedProperty } from "../syncedProperty.ts";
+import { TabHandle } from "../../../../@types/local/tab/tab.d.ts";
+import { Message, notifyChange, requestData } from "../message.ts";
+import { SyncedPropertyHandlerBase } from "../syncedPropertyHandlerBase.ts";
+import { JsonUtils } from "../../../utils/jsonUtils.ts";
 
 export class SyncedPropertyHanderForBackground<T> extends SyncedPropertyHandlerBase<T> {
 

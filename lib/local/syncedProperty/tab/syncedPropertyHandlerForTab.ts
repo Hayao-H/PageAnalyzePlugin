@@ -1,6 +1,6 @@
-import { SyncedProperty } from "../syncedProperty";
-import { Message, requestData } from "../message";
-import { SyncedPropertyHandlerBase } from "../syncedPropertyHandlerBase";
+import { SyncedProperty } from "../syncedProperty.ts";
+import { Message, requestData } from "../message.ts";
+import { SyncedPropertyHandlerBase } from "../syncedPropertyHandlerBase.ts";
 
 export class SyncedPropertyHandlerForTab<T> extends SyncedPropertyHandlerBase<T>{
 

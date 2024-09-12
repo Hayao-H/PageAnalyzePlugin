@@ -1,7 +1,7 @@
-import { TabHandle } from "../../../../@types/local/tab/tab";
-import { Message } from "../message";
-import { SyncedFunctionParameter } from "../parameter";
-import { SyncedFunctionBase } from "../syncedFunctionBase";
+import { TabHandle } from "../../../../@types/local/tab/tab.d.ts";
+import { Message } from "../message.ts";
+import { SyncedFunctionParameter } from "../parameter.ts";
+import { SyncedFunctionBase } from "../syncedFunctionBase.ts";
 
 export class SyncedFunctionForBackground extends SyncedFunctionBase {
 

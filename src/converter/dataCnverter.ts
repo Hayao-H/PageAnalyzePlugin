@@ -1,11 +1,10 @@
-import { DmcInfo } from "../../@types/net/hooks/types/dmcinfo";
-import { DmcinfoImpl } from "../../lib/net/types/impl/dmcinfo";
-import { TagImpl } from "../../lib/net/types/impl/tag";
-import { TargetImpl } from "../../lib/net/types/impl/target";
-import { ThreadImpl } from "../../lib/net/types/impl/thread";
-import { Thumbinfoimpl } from "../../lib/net/types/impl/thumbinfo";
-import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData";
-import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
+import { DmcInfo } from "../../@types/net/hooks/types/dmcinfo.d.ts";
+import { DmcinfoImpl } from "../../lib/net/types/impl/dmcinfo.ts";
+import { TagImpl } from "../../lib/net/types/impl/tag.ts";
+import { TargetImpl } from "../../lib/net/types/impl/target.ts";
+import { Thumbinfoimpl } from "../../lib/net/types/impl/thumbinfo.ts";
+import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData.ts";
+import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult.ts";
 
 export interface DataConverter {
 
@@ -78,27 +77,6 @@ export class DataConverterImpl {
                 target.Fork=t.fork;
 
                 info.CommentTargets.push(target);
-            }
-
-            info.CommentThreads = [];
-            for (const t of original.comment.threads) {
-                const thread = new ThreadImpl();
-                thread.ID = t.id;
-                thread.Fork = t.fork;
-                thread.IsActive = t.isActive;
-                thread.IsDefaultPostTarget = t.isDefaultPostTarget;
-                thread.IsEasyCommentPostTarget = t.isEasyCommentPostTarget;
-                thread.IsLeafRequired = t.isLeafRequired;
-                thread.IsOwnerThread = t.isOwnerThread;
-                thread.IsThreadkeyRequired = t.isThreadkeyRequired;
-                thread.Threadkey = t.threadkey;
-                thread.Is184Forced = t.is184Forced;
-                thread.Label = t.label;
-                thread.Server = t.server;
-                thread.ForkLabel = t.forkLabel;
-                thread.VideoID = t.videoId;
-
-                info.CommentThreads.push(thread);
             }
         }
 

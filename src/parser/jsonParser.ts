@@ -1,6 +1,6 @@
-import { ParentNode } from "../../@types/global";
-import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData";
-import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
+import { ParentNode } from "../../@types/global.d.ts";
+import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData.ts";
+import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult.ts";
 
 export interface JsonParser {
     getApiData(dom: ParentNode): AttemptResult<DataApiData>;

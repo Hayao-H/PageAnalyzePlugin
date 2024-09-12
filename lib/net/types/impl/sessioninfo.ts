@@ -1,4 +1,4 @@
-import { SessionInfo } from "../../../../@types/net/hooks/types/sessioninfo";
+import { SessionInfo } from "../../../../@types/net/hooks/types/sessioninfo.d.ts";
 
 export class SessionInfoImpl implements SessionInfo {
     RecipeId = "";
@@ -12,7 +12,8 @@ export class SessionInfoImpl implements SessionInfo {
     PlayerId = "";
     TransferPriset = "";
     Priority = 0;
-    KeyURL: string | undefined;
+    KeyURL: string | null = null;
+    EncryptedKey: string | null = null;
     Videos: string[] = [""];
     Audios: string[] = [""];
 }

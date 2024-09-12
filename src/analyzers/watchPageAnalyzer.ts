@@ -1,8 +1,8 @@
-import { DmcInfo } from "../../@types/net/hooks/types/dmcinfo";
-import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData";
-import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult";
-import { DataConverter } from "../converter/dataCnverter";
-import { WatchPageHandler } from "../parser/watchPagehandler";
+import { DmcInfo } from "../../@types/net/hooks/types/dmcinfo.d.ts";
+import { DataApiData } from "../../lib/net/types/json/watchpage/dataApiData.ts";
+import { AttemptResult, AttemptResultImpl } from "../../lib/utils/attemptResult.ts";
+import { DataConverter } from "../converter/dataCnverter.ts";
+import { WatchPageHandler } from "../parser/watchPagehandler.ts";
 
 export interface WatchPageANalyzer {
 
