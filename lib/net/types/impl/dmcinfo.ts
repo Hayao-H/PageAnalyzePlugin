@@ -6,7 +6,7 @@ import { Thumbinfo } from "../../../../@types/net/hooks/types/thumbinfo.d.ts";
 import { SessionInfoImpl } from "./sessioninfo.ts";
 import { Thumbinfoimpl } from "./thumbinfo.ts";
 import { DMSInfo } from "../../../../@types/net/hooks/types/dmsInfo.d.ts";
-import { DMSInfoImpl } from "./dmsinfo.ts";
+import { DMSInfoImpl } from "./dmsInfo.ts";
 
 export class DmcinfoImpl implements DmcInfo {
   Title = "";
