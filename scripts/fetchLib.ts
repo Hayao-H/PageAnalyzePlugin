@@ -58,4 +58,6 @@ Deno.chdir("../")
 fs.copySync("NiconicomeAddonCoreLib\\@types", "@types", { overwrite: true });
 fs.copySync("NiconicomeAddonCoreLib\\lib", "lib", { overwrite: true });
 
+await Deno.remove("NiconicomeAddonCoreLib", { recursive: true });
+
 Deno.exit(0);
