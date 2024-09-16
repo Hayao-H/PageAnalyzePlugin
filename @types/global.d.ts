@@ -23,6 +23,11 @@ declare global {
    */
   function fetch(url: string, options: FetchOption | null): Promise<Response>;
 
+  /**
+   * HTMLを解析
+   * @param source 
+   * @remarks 権限は不要です
+   */
   function parseHtml(source: string): ParentNode;
 }
 
@@ -107,12 +112,45 @@ export interface FetchOption {
   headers?: { [key: string]: string };
 }
 
+
 export interface ParentNode {
-  QuerySelector(selectors: string): Element | null;
+  /**
+   * 要素を取得
+   * @param selector 
+   */
+  QuerySelector(selector: string): Element | null;
+
+  /**
+   * 要素を取得
+   * @param selector 
+   */
+  QuerySelectorAll(selector: string): Element[];
 }
 
 export interface Element {
+
+  /**
+   * 属性を取得
+   * @param name 
+   */
   GetAttribute(name: string): string;
+
+  /**
+   * 要素を取得
+   * @param selector 
+   */
+  QuerySelector(selector: string): Element | null;
+
+  /**
+   * 要素を取得
+   * @param selector 
+   */
+  QuerySelectorAll(selector: string): Element[];
+
+  /**
+   * テキストを取得
+   */
+  InnerHtml: string;
 }
 
 interface Chrome {

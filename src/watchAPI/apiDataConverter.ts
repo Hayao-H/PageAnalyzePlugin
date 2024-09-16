@@ -3,7 +3,7 @@ import { DmcinfoImpl } from "../../lib/net/types/impl/dmcinfo.ts";
 import {
   AudioStreamImpl,
   VideoStreamImpl,
-} from "../../lib/net/types/impl/dmsinfo.ts";
+} from "../../lib/net/types/impl/dmsInfo.ts";
 import { TagImpl } from "../../lib/net/types/impl/tag.ts";
 import { TargetImpl } from "../../lib/net/types/impl/target.ts";
 import { Thumbinfoimpl } from "../../lib/net/types/impl/thumbinfo.ts";
