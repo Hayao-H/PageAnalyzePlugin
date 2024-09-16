@@ -18,6 +18,6 @@ if (!output.success) {
     Deno.exit(1);
 }
 
-console.log("圧縮が完了しました。");
+console.log("発行が完了しました。");
 
 await Deno.remove("tmp", { recursive: true });
