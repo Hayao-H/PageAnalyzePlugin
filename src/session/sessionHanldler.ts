@@ -1,6 +1,6 @@
-import { DmcInfo } from "../../@types/net/hooks/types/dmcinfo.d.ts";
+import { DmcInfo } from "../../@types/net/hooks/types/dmcInfo.d.ts";
 import { NiconicoSessionInfo } from "../../@types/net/hooks/types/niconicoSessionInfo.d.ts";
-import { SessionInfo } from "../../@types/net/hooks/types/sessioninfo.d.ts";
+import { SessionInfo } from "../../@types/net/hooks/types/sessionInfo.d.ts";
 import { AttemptResult } from "../../lib/utils/attemptResult.ts";
 import { DataComposer } from "./data/dataComposer.ts";
 import { SessionEnsure } from "./ensure/sessionEnsure.ts";
