@@ -1,4 +1,4 @@
-import { DmcInfo } from "../../@types/net/hooks/types/dmcinfo.d.ts";
+import { DmcInfo } from "../../@types/net/hooks/types/dmcInfo.d.ts";
 import { DmcinfoImpl } from "../../lib/net/types/impl/dmcinfo.ts";
 import {
   AudioStreamImpl,
@@ -8,7 +8,7 @@ import { TagImpl } from "../../lib/net/types/impl/tag.ts";
 import { TargetImpl } from "../../lib/net/types/impl/target.ts";
 import { Thumbinfoimpl } from "../../lib/net/types/impl/thumbinfo.ts";
 import { WatchAPISimple } from "../../lib/net/types/json/api/watch/simple/api.ts";
-import { Data} from "../../lib/net/types/json/api/watch/simple/api.ts";
+import { Data } from "../../lib/net/types/json/api/watch/simple/api.ts";
 import {
   AttemptResult,
   AttemptResultImpl,
@@ -21,7 +21,11 @@ export interface APIDataConverter {
 export class APIDataConverterImpl implements APIDataConverter {
   public Convert(source: WatchAPISimple): AttemptResult<DmcInfo> {
     try {
-      return new AttemptResultImpl(true, "", this.ConvertInternal(source.data.response));
+      return new AttemptResultImpl(
+        true,
+        "",
+        this.ConvertInternal(source.data.response),
+      );
     } catch (ex: unknown) {
       if (ex instanceof Error) {
         return new AttemptResultImpl(
@@ -115,10 +119,8 @@ export class APIDataConverterImpl implements APIDataConverter {
         } else {
           info.SessionInfo.TransferPriset = "";
         }
-        info.SessionInfo.Videos =
-          source.media.delivery.movie.session.videos;
-        info.SessionInfo.Audios =
-          source.media.delivery.movie.session.audios;
+        info.SessionInfo.Videos = source.media.delivery.movie.session.videos;
+        info.SessionInfo.Audios = source.media.delivery.movie.session.audios;
         info.SessionInfo.Priority =
           source.media.delivery.movie.session.priority;
       }
@@ -127,16 +129,18 @@ export class APIDataConverterImpl implements APIDataConverter {
         info.IsDownloadable = true;
         info.IsDMS = true;
         info.DmsInfo.accessRightKey = source.media.domand.accessRightKey;
-        info.DmsInfo.videos = source.media.domand.videos.map((v) =>
+        info.DmsInfo.videos = source.media.domand.videos.filter((v) =>
+          v.isAvailable
+        ).map((v) =>
           new VideoStreamImpl(
             v.id,
             v.height,
             v.recommendedHighestAudioQualityLevel,
           )
         );
-        info.DmsInfo.audios = source.media.domand.audios.map((a) =>
-          new AudioStreamImpl(a.id, a.qualityLevel, a.isAvailable)
-        );
+        info.DmsInfo.audios = source.media.domand.audios.filter((a) =>
+          a.isAvailable
+        ).map((a) => new AudioStreamImpl(a.id, a.qualityLevel, a.isAvailable));
       }
     } else {
       info.IsDownloadable = false;
