@@ -22,76 +22,70 @@ function main() {
   const logger = new LoggerImpl();
 
   if (output.canUse) {
-    if (!application.hooks?.isRegistered("PageAnalyze")) {
-      application.hooks?.registerPageAnalyzeFunction((content) => {
-        const handler = new WatchPageHandlerImpl(
-          new HtmlParserImpl(),
-          new JsonParserImpl(),
-        );
-        const converter = new DataConverterImpl();
-        const analyzer = new WatchPageANalyzerImpl(handler, converter);
+    application.hooks?.registerPageAnalyzeFunction((content) => {
+      const handler = new WatchPageHandlerImpl(
+        new HtmlParserImpl(),
+        new JsonParserImpl(),
+      );
+      const converter = new DataConverterImpl();
+      const analyzer = new WatchPageANalyzerImpl(handler, converter);
 
-        const result: AttemptResult<DmcInfo> = analyzer.analyze(content);
+      const result: AttemptResult<DmcInfo> = analyzer.analyze(content);
 
-        if (!result.isSucceeded || result.data === null) {
-          const message =
-            `視聴ページの解析に失敗しました。(詳細:${result.message}, 例外:${result.exception?.message})`;
-          output.write(message);
-          logger.error(message);
-          throw new Error();
-        }
+      if (!result.isSucceeded || result.data === null) {
+        const message =
+          `視聴ページの解析に失敗しました。(詳細:${result.message}, 例外:${result.exception?.message})`;
+        output.write(message);
+        logger.error(message);
+        throw new Error();
+      }
 
-        return result.data;
-      });
-    }
+      return result.data;
+    });
 
-    if (!application.hooks?.isRegistered("RemoteInfo")) {
-      application.hooks?.registerVideoInfoFunction(async (videoID, trackID) => {
-        const fetcher = new APIFetcherImpl();
-        const converter = new APIDataConverterImpl();
-        const handler = new APIHandlerImpl(converter, fetcher);
+    application.hooks?.registerVideoInfoFunction(async (videoID, trackID) => {
+      const fetcher = new APIFetcherImpl();
+      const converter = new APIDataConverterImpl();
+      const handler = new APIHandlerImpl(converter, fetcher);
 
-        const result: AttemptResult<DmcInfo> = await handler.GetVideoInfo(
-          videoID,
-          trackID,
-        );
+      const result: AttemptResult<DmcInfo> = await handler.GetVideoInfo(
+        videoID,
+        trackID,
+      );
 
-        if (!result.isSucceeded || result.data === null) {
-          const message =
-            `視聴ページの解析に失敗しました。(詳細:${result.message})`;
-          output.write(message);
-          logger.error(message);
-          throw new Error();
-        }
-        return result.data;
-      });
+      if (!result.isSucceeded || result.data === null) {
+        const message =
+          `視聴ページの解析に失敗しました。(詳細:${result.message})`;
+        output.write(message);
+        logger.error(message);
+        throw new Error();
+      }
+      return result.data;
+    });
 
-      output.write("ページ解析機能の初期化が完了しました。");
-    }
+    output.write("ページ解析機能の初期化が完了しました。");
 
-    if (!application.hooks?.isRegistered("WatchSession")) {
-      application.hooks?.registerSessionEnsuringFunction(async (info) => {
-        const composer = new DataComposerImpl();
-        const session = new SessionEnsureImpl();
-        const handler = new SessionHandler(composer, session);
+    application.hooks?.registerSessionEnsuringFunction(async (info) => {
+      const composer = new DataComposerImpl();
+      const session = new SessionEnsureImpl();
+      const handler = new SessionHandler(composer, session);
 
-        const result: AttemptResult<NiconicoSessionInfo> =
-          info.DmsInfo.accessRightKey === ""
-            ? await handler.EnsureSession(info.SessionInfo)
-            : await handler.GetAccessRight(info);
+      const result: AttemptResult<NiconicoSessionInfo> =
+        info.DmsInfo.accessRightKey === ""
+          ? await handler.EnsureSession(info.SessionInfo)
+          : await handler.GetAccessRight(info);
 
-        if (!result.isSucceeded || result.data === null) {
-          const message =
-            `セッションの確立に失敗しました。(詳細:${result.message})`;
-          output.write(message);
-          logger.error(message);
-          throw new Error();
-        }
+      if (!result.isSucceeded || result.data === null) {
+        const message =
+          `セッションの確立に失敗しました。(詳細:${result.message})`;
+        output.write(message);
+        logger.error(message);
+        throw new Error();
+      }
 
-        return result.data;
-      });
+      return result.data;
+    });
 
-      output.write("セッション確立機能の初期化が完了しました。");
-    }
+    output.write("セッション確立機能の初期化が完了しました。");
   }
 }
